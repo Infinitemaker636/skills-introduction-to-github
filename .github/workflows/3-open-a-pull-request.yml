@@ -73,15 +73,15 @@ jobs:
 
       # START: Check practical exercise
 
-      # Note: Keyphrase updated from "Add my first file" to match the Copilot completion PR title,
-      # since the original my-first-branch PR used an incorrect title and the exercise is being
-      # completed via an alternative PR to main.
+      # Note: Keyphrase updated from "Add my first file" to match the Copilot completion PR title
+      # ("[WIP] Complete exercise for introduction to GitHub"), since the original my-first-branch
+      # PR used an incorrect title and the exercise is being completed via an alternative PR.
       - name: Check PR title for keyphrase
         id: check-pr-title
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          keyphrase: "complete exercise for introduction to github"
+          keyphrase: "Complete exercise for introduction to GitHub"
           text: ${{ github.event.pull_request.title }}
           case-sensitive: false
 
