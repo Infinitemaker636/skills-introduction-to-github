@@ -25,11 +25,13 @@ env:
 
 jobs:
   find_exercise:
-    # Note: Branch restriction removed to allow exercise completion via the Copilot PR.
-    # The original 'my-first-branch' PR had an incorrect title and the branch is now
-    # protected against new pushes, so this workflow accepts any PR to main.
+    # Note: Branch restriction expanded to include the Copilot completion PR as a workaround.
+    # The original 'my-first-branch' PR (PR #2) had an incorrect title and cannot be updated
+    # (branch is now protected against new pushes). This allows the exercise to be completed
+    # via the Copilot PR. The original 'my-first-branch' check is preserved as a fallback.
     if: |
-      !github.event.repository.is_template
+      !github.event.repository.is_template &&
+      (github.head_ref == 'my-first-branch' || github.head_ref == 'copilot/exercise-introduction-to-github')
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
 
